@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#131842"/>
+  <circle cx="100" cy="80" r="35" fill="#00d4ff"/>
+  <path d="M 100 120 Q 100 140 85 145 L 65 180 L 135 180 L 115 145 Q 100 140 100 120" fill="#00d4ff"/>
+  <text x="50%" y="95%" dominant-baseline="middle" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#7dd3c0">Roberto M.</text>
+</svg>

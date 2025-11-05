@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio profesional de Ingeniero Informático y Desarrollador Full Stack">
+    <title>Portfolio - Ingeniero Informático</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Portfolio</div>
+            <ul class="nav-menu">
+                <li><a href="#hero" class="nav-link">Inicio</a></li>
+                <li><a href="#about" class="nav-link">Sobre mí</a></li>
+                <li><a href="#skills" class="nav-link">Habilidades</a></li>
+                <li><a href="#projects" class="nav-link">Proyectos</a></li>
+                <li><a href="#education" class="nav-link">Educación</a></li>
+                <li><a href="#contact" class="nav-link">Contacto</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-image">
+                    <img src="assets/profile.jpg" alt="Foto de perfil" id="profile-img">
+                </div>
+                <h1 class="hero-title">Roberto Martínez García</h1>
+                <p class="hero-subtitle">Ingeniero Informático | Desarrollador Full Stack</p>
+                <div class="hero-buttons">
+                    <a href="assets/cv.pdf" download class="btn btn-primary">
+                        <i class="fas fa-download"></i> Descargar CV
+                    </a>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/tu-perfil" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/robmg9655" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:contacto@ejemplo.com" class="social-link" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <h2 class="section-title">Sobre mí</h2>
+            <div class="about-content">
+                <p class="about-text">
+                    Soy un apasionado Ingeniero Informático con experiencia en desarrollo Full Stack, 
+                    especializado en crear soluciones tecnológicas innovadoras y escalables. Mi enfoque 
+                    se centra en escribir código limpio, eficiente y mantenible, siempre buscando las 
+                    mejores prácticas y tecnologías emergentes.
+                </p>
+                <p class="about-text">
+                    Me encanta trabajar en proyectos desafiantes que me permitan aprender constantemente 
+                    y aportar valor real. Tengo experiencia tanto en el desarrollo frontend con frameworks 
+                    modernos como React y Next.js, como en el backend con Node.js y bases de datos SQL y NoSQL. 
+                    Mi objetivo es seguir creciendo profesionalmente mientras contribuyo al éxito de proyectos 
+                    innovadores.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
+        <div class="container">
+            <h2 class="section-title">Habilidades</h2>
+            <div class="skills-grid">
+                <div class="skill-card" data-tooltip="Lenguaje versátil para desarrollo backend, scripting y data science">
+                    <i class="fab fa-python skill-icon"></i>
+                    <span class="skill-name">Python</span>
+                </div>
+                <div class="skill-card" data-tooltip="Lenguaje fundamental para desarrollo web interactivo">
+                    <i class="fab fa-js skill-icon"></i>
+                    <span class="skill-name">JavaScript</span>
+                </div>
+                <div class="skill-card" data-tooltip="Superset de JavaScript con tipado estático">
+                    <i class="fas fa-code skill-icon"></i>
+                    <span class="skill-name">TypeScript</span>
+                </div>
+                <div class="skill-card" data-tooltip="Biblioteca para construir interfaces de usuario">
+                    <i class="fab fa-react skill-icon"></i>
+                    <span class="skill-name">React</span>
+                </div>
+                <div class="skill-card" data-tooltip="Framework de React para aplicaciones web modernas">
+                    <i class="fas fa-arrow-right skill-icon"></i>
+                    <span class="skill-name">Next.js</span>
+                </div>
+                <div class="skill-card" data-tooltip="Entorno de ejecución JavaScript del lado del servidor">
+                    <i class="fab fa-node skill-icon"></i>
+                    <span class="skill-name">Node.js</span>
+                </div>
+                <div class="skill-card" data-tooltip="Base de datos NoSQL orientada a documentos">
+                    <i class="fas fa-database skill-icon"></i>
+                    <span class="skill-name">MongoDB</span>
+                </div>
+                <div class="skill-card" data-tooltip="Sistema de gestión de bases de datos relacional">
+                    <i class="fas fa-database skill-icon"></i>
+                    <span class="skill-name">PostgreSQL</span>
+                </div>
+                <div class="skill-card" data-tooltip="Sistema de control de versiones distribuido">
+                    <i class="fab fa-git-alt skill-icon"></i>
+                    <span class="skill-name">Git</span>
+                </div>
+                <div class="skill-card" data-tooltip="Plataforma de contenedores para desarrollo y despliegue">
+                    <i class="fab fa-docker skill-icon"></i>
+                    <span class="skill-name">Docker</span>
+                </div>
+                <div class="skill-card" data-tooltip="Sistema operativo para servidores y desarrollo">
+                    <i class="fab fa-linux skill-icon"></i>
+                    <span class="skill-name">Linux</span>
+                </div>
+                <div class="skill-card" data-tooltip="Framework CSS para diseño responsive">
+                    <i class="fab fa-css3-alt skill-icon"></i>
+                    <span class="skill-name">CSS3</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects section">
+        <div class="container">
+            <h2 class="section-title">Experiencia / Proyectos</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/project1.jpg" alt="Proyecto 1">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">E-Commerce Platform</h3>
+                        <p class="project-description">
+                            Plataforma completa de comercio electrónico desarrollada con React, Node.js y MongoDB. 
+                            Incluye sistema de pagos, gestión de inventario y panel de administración.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                            <a href="#" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> Código
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/project2.jpg" alt="Proyecto 2">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Task Management App</h3>
+                        <p class="project-description">
+                            Aplicación de gestión de tareas con autenticación, colaboración en tiempo real 
+                            y notificaciones. Construida con Next.js y PostgreSQL.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Next.js</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                            <a href="#" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> Código
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/project3.jpg" alt="Proyecto 3">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Data Analytics Dashboard</h3>
+                        <p class="project-description">
+                            Dashboard interactivo para visualización de datos y análisis en tiempo real. 
+                            Integración con APIs y procesamiento de grandes volúmenes de información.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Demo
+                            </a>
+                            <a href="#" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> Código
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education section">
+        <div class="container">
+            <h2 class="section-title">Educación</h2>
+            <div class="education-timeline">
+                <div class="education-item">
+                    <div class="education-date">2018 - 2022</div>
+                    <div class="education-content">
+                        <h3 class="education-title">Ingeniería Informática</h3>
+                        <p class="education-institution">Universidad Politécnica de Madrid</p>
+                        <p class="education-description">
+                            Grado en Ingeniería Informática con especialización en Ingeniería del Software. 
+                            Proyecto final: Sistema distribuido de procesamiento de datos en tiempo real.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-date">2022</div>
+                    <div class="education-content">
+                        <h3 class="education-title">Full Stack Web Development Bootcamp</h3>
+                        <p class="education-institution">Udemy / Coursera</p>
+                        <p class="education-description">
+                            Bootcamp intensivo de 6 meses enfocado en tecnologías MERN Stack 
+                            (MongoDB, Express, React, Node.js) y mejores prácticas de desarrollo.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-date">2023</div>
+                    <div class="education-content">
+                        <h3 class="education-title">AWS Certified Developer</h3>
+                        <p class="education-institution">Amazon Web Services</p>
+                        <p class="education-description">
+                            Certificación en desarrollo y despliegue de aplicaciones en la nube AWS, 
+                            incluyendo servicios como EC2, Lambda, S3, y RDS.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-content">
+                <p class="contact-description">
+                    ¿Tienes un proyecto en mente o quieres colaborar? ¡Me encantaría saber de ti!
+                </p>
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                    </button>
+                </form>
+                <div id="form-message" class="form-message"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Roberto Martínez García. Todos los derechos reservados.</p>
+            <div class="footer-social">
+                <a href="https://linkedin.com/in/tu-perfil" target="_blank" rel="noopener" class="social-link">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/robmg9655" target="_blank" rel="noopener" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:contacto@ejemplo.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
