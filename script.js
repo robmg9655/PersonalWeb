@@ -143,7 +143,20 @@ window.addEventListener('scroll', () => {
 
 // Initialize EmailJS with your public key
 // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
-emailjs.init('YOUR_PUBLIC_KEY');
+const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+
+// Check if EmailJS is configured
+const isEmailJSConfigured = () => {
+    return EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY' 
+        && EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID' 
+        && EMAILJS_TEMPLATE_ID !== 'YOUR_TEMPLATE_ID';
+};
+
+if (typeof emailjs !== 'undefined' && isEmailJSConfigured()) {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+}
 
 // ===========================
 // Contact Form Submission
@@ -173,6 +186,12 @@ contactForm.addEventListener('submit', async (e) => {
         return;
     }
     
+    // Check if EmailJS is configured
+    if (!isEmailJSConfigured()) {
+        showMessage('El formulario de contacto aún no está configurado. Por favor, contáctame directamente por email.', 'error');
+        return;
+    }
+    
     // Disable submit button
     const submitButton = contactForm.querySelector('button[type="submit"]');
     const originalButtonText = submitButton.innerHTML;
@@ -181,10 +200,9 @@ contactForm.addEventListener('submit', async (e) => {
     
     try {
         // Send email using EmailJS
-        // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual IDs
         const response = await emailjs.send(
-            'YOUR_SERVICE_ID',
-            'YOUR_TEMPLATE_ID',
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
             {
                 from_name: name,
                 from_email: email,
@@ -248,22 +266,24 @@ projectImages.forEach((img, index) => {
 // ===========================
 // Typing Effect for Hero Subtitle (Optional Enhancement)
 // ===========================
+// To enable the typing effect, uncomment the code below and call initTypingEffect()
 
-const heroSubtitle = document.querySelector('.hero-subtitle');
-const subtitleText = heroSubtitle.textContent;
-let charIndex = 0;
-
-function typeEffect() {
-    if (charIndex < subtitleText.length) {
-        heroSubtitle.textContent = subtitleText.substring(0, charIndex + 1);
-        charIndex++;
-        setTimeout(typeEffect, 50);
-    }
-}
-
-// Uncomment the lines below to enable typing effect
-// heroSubtitle.textContent = '';
-// setTimeout(typeEffect, 1000);
+// function initTypingEffect() {
+//     const heroSubtitle = document.querySelector('.hero-subtitle');
+//     const subtitleText = heroSubtitle.textContent;
+//     let charIndex = 0;
+//     
+//     function typeEffect() {
+//         if (charIndex < subtitleText.length) {
+//             heroSubtitle.textContent = subtitleText.substring(0, charIndex + 1);
+//             charIndex++;
+//             setTimeout(typeEffect, 50);
+//         }
+//     }
+//     
+//     heroSubtitle.textContent = '';
+//     setTimeout(typeEffect, 1000);
+// }
 
 // ===========================
 // Parallax Effect for Hero Section
