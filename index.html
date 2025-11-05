@@ -25,6 +25,26 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- EmailJS -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "4lYa0rxEMQpyBjONq",
+        });
+      })();
+    </script>
+
+    <!-- JavaScript -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <script src="script.js"></script>
   </head>
   <body>
     <!-- Theme Toggle Button -->
@@ -418,12 +438,5 @@
         </div>
       </div>
     </footer>
-
-    <!-- JavaScript -->
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
-    ></script>
-    <script src="script.js"></script>
   </body>
 </html>

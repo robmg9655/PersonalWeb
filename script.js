@@ -143,9 +143,9 @@ window.addEventListener('scroll', () => {
 
 // Initialize EmailJS with your public key
 // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+const EMAILJS_PUBLIC_KEY = '4lYa0rxEMQpyBjONq';
+const EMAILJS_SERVICE_ID = 'service_h7eqocf';
+const EMAILJS_TEMPLATE_ID = 'service_h7eqocf';
 
 // Check if EmailJS is configured
 const isEmailJSConfigured = () => {
