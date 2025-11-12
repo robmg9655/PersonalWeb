@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Professional portfolio of a Computer Engineer and Full Stack Developer"
+      content="Robert Gost Montoliu — Computer Engineering student and software developer portfolio"
     />
-    <title>Robert's Portfolio</title>
+    <title>Robert Gost Montoliu — Portfolio</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -74,12 +74,24 @@
               id="profile-img"
             />
           </div>
-          <h1 class="hero-title">Roberto Gost Montoliu</h1>
-          <p class="hero-subtitle">Computer Engineer | Full Stack Developer</p>
+          <h1 class="hero-title">Robert Gost Montoliu</h1>
+          <p class="hero-subtitle">Computer Engineering</p>
+          <p class="hero-contact">
+            Tokyo, Japan &nbsp;|&nbsp; +81 070 1249 3153 &nbsp;|&nbsp;
+            <a>gostmon96@gmail.com</a>
+          </p>
+          <p class="hero-contact-meta">
+            Spain (Barcelona) · Born 30/07/1996 · Male · Driving license: B
+          </p>
           <div class="hero-buttons">
-            <a href="assets/cv.pdf" download class="btn btn-primary">
+            <button
+              id="download-cv-btn"
+              class="btn btn-primary"
+              aria-haspopup="dialog"
+              aria-controls="cv-modal"
+            >
               <i class="fas fa-download"></i> Download CV
-            </a>
+            </button>
             <div class="social-links">
               <a
                 href="https://www.linkedin.com/in/robert-gost-montoliu-a786a1108/"
@@ -108,6 +120,40 @@
               </a>
             </div>
           </div>
+
+          <!-- CV download modal -->
+          <div
+            id="cv-modal"
+            class="modal hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="cv-modal-title"
+          >
+            <div class="modal-overlay" data-close="true"></div>
+            <div class="modal-content">
+              <button class="modal-close" aria-label="Close modal">
+                &times;
+              </button>
+              <h3 id="cv-modal-title">Download CV</h3>
+              <p class="muted">Choose a language</p>
+              <div class="cv-options">
+                <button
+                  class="flag-btn"
+                  data-file="assets/cv_en.pdf"
+                  aria-label="Download English CV"
+                >
+                  <span class="flag flag-uk" aria-hidden="true"></span>
+                </button>
+                <button
+                  class="flag-btn"
+                  data-file="assets/cv_jp.pdf"
+                  aria-label="Download Japanese CV"
+                >
+                  <span class="flag flag-jp" aria-hidden="true"></span>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -115,115 +161,109 @@
     <!-- About Section -->
     <section id="about" class="about section">
       <div class="container">
-        <h2 class="section-title">About Me</h2>
+        <h2 class="section-title">Professional Summary</h2>
         <div class="about-content">
           <p class="about-text">
-            I am a passionate Computer Engineer with experience in Full Stack
-            development, specializing in building innovative and scalable
-            technology solutions. My focus is on writing clean, efficient, and
-            maintainable code while following best practices and exploring
-            emerging technologies.
+            Automotive professional with over 7 years of hands-on experience in
+            the automotive industry and a strong background in team leadership
+            and workshop management. Currently completing a Bachelor's degree in
+            Computer Engineering (UOC) and transitioning into software
+            development. I have built small projects and scripts in Python and
+            Java, and I continue to learn web development, databases, and
+            software testing. I bring analytical problem-solving, attention to
+            detail, and a collaborative mindset to technical teams.
           </p>
           <p class="about-text">
-            I enjoy working on challenging projects that let me learn
-            continuously and deliver real value. I have experience in frontend
-            development with modern frameworks like React and Next.js, and
-            backend development with Node.js and both SQL and NoSQL databases.
-            My goal is to keep growing professionally while contributing to the
-            success of innovative projects.
+            Career objective: Seek roles in international technology companies,
+            focusing on full-stack development or projects related to artificial
+            intelligence. Responsible, persistent, and passionate about
+            continuous learning with cross-cultural experience acquired while
+            living in Japan.
+          </p>
+          <h3 class="section-subtitle">Personal IT & Projects</h3>
+          <p class="about-text">
+            Developed small applications and automation scripts in Python and
+            Java. Published personal projects on GitHub and practiced web
+            development, databases, and software testing. Familiar with LLM
+            workflows and experimenting with related tools.
           </p>
         </div>
       </div>
     </section>
 
+    <!-- Note: Professional Experience moved into Education timeline -->
+
     <!-- Skills Section -->
     <section id="skills" class="skills section">
       <div class="container">
-        <h2 class="section-title">Skills</h2>
+        <h2 class="section-title">Technical Skills</h2>
         <div class="skills-grid">
-          <div
-            class="skill-card"
-            data-tooltip="Versatile language for backend development, scripting, and data science"
-          >
+          <div class="skill-card" data-tooltip="Python programming">
             <i class="fab fa-python skill-icon"></i>
             <span class="skill-name">Python</span>
           </div>
-          <div
-            class="skill-card"
-            data-tooltip="Core language for interactive web development"
-          >
-            <i class="fab fa-js skill-icon"></i>
-            <span class="skill-name">JavaScript</span>
+          <div class="skill-card" data-tooltip="Java programming">
+            <i class="fas fa-code skill-icon"></i>
+            <span class="skill-name">Java</span>
+          </div>
+          <div class="skill-card" data-tooltip="SQL databases">
+            <i class="fas fa-database skill-icon"></i>
+            <span class="skill-name">SQL</span>
+          </div>
+          <div class="skill-card" data-tooltip="HTML5 markup">
+            <i class="fab fa-html5 skill-icon"></i>
+            <span class="skill-name">HTML</span>
           </div>
           <div
             class="skill-card"
-            data-tooltip="JavaScript superset with static typing"
+            data-tooltip="CSS for styling and responsive design"
+          >
+            <i class="fab fa-css3-alt skill-icon"></i>
+            <span class="skill-name">CSS</span>
+          </div>
+          <div
+            class="skill-card"
+            data-tooltip="TypeScript for typed JavaScript"
           >
             <i class="fas fa-code skill-icon"></i>
             <span class="skill-name">TypeScript</span>
           </div>
-          <div
-            class="skill-card"
-            data-tooltip="Library for building user interfaces"
-          >
-            <i class="fab fa-react skill-icon"></i>
-            <span class="skill-name">React</span>
-          </div>
-          <div
-            class="skill-card"
-            data-tooltip="React framework for modern web applications"
-          >
-            <i class="fas fa-arrow-right skill-icon"></i>
-            <span class="skill-name">Next.js</span>
-          </div>
-          <div
-            class="skill-card"
-            data-tooltip="JavaScript runtime for server-side development"
-          >
-            <i class="fab fa-node skill-icon"></i>
-            <span class="skill-name">Node.js</span>
-          </div>
-          <div
-            class="skill-card"
-            data-tooltip="Document-oriented NoSQL database"
-          >
-            <i class="fas fa-database skill-icon"></i>
-            <span class="skill-name">MongoDB</span>
-          </div>
-          <div
-            class="skill-card"
-            data-tooltip="Relational database management system"
-          >
-            <i class="fas fa-database skill-icon"></i>
-            <span class="skill-name">PostgreSQL</span>
-          </div>
-          <div
-            class="skill-card"
-            data-tooltip="Distributed version control system"
-          >
+          <div class="skill-card" data-tooltip="Version control with Git">
             <i class="fab fa-git-alt skill-icon"></i>
             <span class="skill-name">Git</span>
           </div>
-          <div
-            class="skill-card"
-            data-tooltip="Container platform for development and deployment"
-          >
-            <i class="fab fa-docker skill-icon"></i>
-            <span class="skill-name">Docker</span>
+          <div class="skill-card" data-tooltip="VS Code / development tooling">
+            <i class="fas fa-laptop-code skill-icon"></i>
+            <span class="skill-name">VS Code</span>
           </div>
-          <div
-            class="skill-card"
-            data-tooltip="Operating system commonly used for servers and development"
-          >
-            <i class="fab fa-linux skill-icon"></i>
-            <span class="skill-name">Linux</span>
+          <div class="skill-card" data-tooltip="Xcode / iOS development">
+            <i class="fas fa-mobile-alt skill-icon"></i>
+            <span class="skill-name">Xcode</span>
           </div>
-          <div
-            class="skill-card"
-            data-tooltip="CSS technology for responsive design"
-          >
-            <i class="fab fa-css3-alt skill-icon"></i>
-            <span class="skill-name">CSS3</span>
+          <div class="skill-card" data-tooltip="Node.js runtime and ecosystem">
+            <i class="fab fa-node skill-icon"></i>
+            <span class="skill-name">Node.js</span>
+          </div>
+        </div>
+        <div class="skills-extras">
+          <div class="skill-box">
+            <h3 class="skill-box-title">+ Skills</h3>
+            <ul>
+              <li>Problem-solving</li>
+              <li>Teamwork</li>
+              <li>Adaptability</li>
+              <li>Strong attention to detail</li>
+            </ul>
+          </div>
+
+          <div class="skill-box">
+            <h3 class="skill-box-title">Languages</h3>
+            <ul>
+              <li>Spanish (Native)</li>
+              <li>Catalan (Native)</li>
+              <li>English (Fluent)</li>
+              <li>Japanese (Conversational)</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -236,26 +276,32 @@
         <div class="projects-grid">
           <div class="project-card">
             <div class="project-image">
-              <img src="assets/project1.jpg" alt="Proyecto 1" />
+              <img
+                src="assets/kanamaster.png"
+                alt="KanaMaster app screenshot"
+              />
             </div>
             <div class="project-content">
-              <h3 class="project-title">E-Commerce Platform</h3>
+              <h3 class="project-title">KanaMaster (iPhone &amp; iPad)</h3>
               <p class="project-description">
-                Full e-commerce platform built with React, Node.js and MongoDB.
-                Features include payment processing, inventory management, and
-                an admin dashboard.
+                KanaMaster is an iOS app for iPhone and iPad to learn Japanese —
+                including kanji, hiragana, katakana, vocabulary, and grammar. It
+                features interactive lessons, spaced-repetition flashcards,
+                quizzes, and progress tracking. Built with Swift and SwiftUI.
               </p>
               <div class="project-tags">
-                <span class="tag">React</span>
-                <span class="tag">Node.js</span>
-                <span class="tag">MongoDB</span>
+                <span class="tag">iOS</span>
+                <span class="tag">Swift</span>
+                <span class="tag">SwiftUI</span>
+                <span class="tag">Education</span>
               </div>
               <div class="project-links">
-                <a href="#" target="_blank" class="project-link">
-                  <i class="fas fa-external-link-alt"></i> Demo
-                </a>
-                <a href="#" target="_blank" class="project-link">
-                  <i class="fab fa-github"></i> Código
+                <a
+                  href="https://github.com/robmg9655/KanaMaster"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Code
                 </a>
               </div>
             </div>
@@ -263,26 +309,34 @@
 
           <div class="project-card">
             <div class="project-image">
-              <img src="assets/project2.jpg" alt="Proyecto 2" />
+              <img
+                src="assets/translationb2b.png"
+                alt="Translation-B2B app screenshot"
+              />
             </div>
             <div class="project-content">
-              <h3 class="project-title">Task Management App</h3>
+              <h3 class="project-title">Translation-B2B</h3>
               <p class="project-description">
-                Task management application with authentication, real-time
-                collaboration, and notifications. Built with Next.js and
-                PostgreSQL.
+                Translation-B2B is a hybrid mobile/tablet app and browser
+                extension focused on translating web pages (primarily Japanese
+                to English) while preserving form inputs, interactive elements,
+                and images that standard translators often miss. It is designed
+                to avoid breaking page behavior and to work as a phone/tablet
+                app plus extensions for Chrome and Safari.
               </p>
               <div class="project-tags">
-                <span class="tag">Next.js</span>
+                <span class="tag">React Native</span>
                 <span class="tag">TypeScript</span>
-                <span class="tag">PostgreSQL</span>
+                <span class="tag">Browser Extension</span>
+                <span class="tag">NLP</span>
               </div>
               <div class="project-links">
-                <a href="#" target="_blank" class="project-link">
-                  <i class="fas fa-external-link-alt"></i> Demo
-                </a>
-                <a href="#" target="_blank" class="project-link">
-                  <i class="fab fa-github"></i> Código
+                <a
+                  href="https://github.com/robmg9655/translation-b2b"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Code
                 </a>
               </div>
             </div>
@@ -290,26 +344,34 @@
 
           <div class="project-card">
             <div class="project-image">
-              <img src="assets/project3.jpg" alt="Proyecto 3" />
+              <img
+                src="assets/goldmine.png"
+                alt="GoldMine desktop app screenshot"
+              />
             </div>
             <div class="project-content">
-              <h3 class="project-title">Data Analytics Dashboard</h3>
+              <h3 class="project-title">GoldMine</h3>
               <p class="project-description">
-                Interactive dashboard for data visualization and real-time
-                analytics. Integrates with external APIs and handles large-scale
-                data processing.
+                GoldMine is a desktop application for managing multiple accounts
+                across platforms (Discord, Twitter, online games, and email). It
+                supports dedicated proxy configurations and token-based login
+                management to keep sessions isolated and reliable while
+                minimizing the risk of breaking site behavior.
               </p>
               <div class="project-tags">
-                <span class="tag">Python</span>
-                <span class="tag">React</span>
-                <span class="tag">Docker</span>
+                <span class="tag">Electron</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">Proxy</span>
+                <span class="tag">Security</span>
               </div>
               <div class="project-links">
-                <a href="#" target="_blank" class="project-link">
-                  <i class="fas fa-external-link-alt"></i> Demo
-                </a>
-                <a href="#" target="_blank" class="project-link">
-                  <i class="fab fa-github"></i> Código
+                <a
+                  href="https://github.com/robmg9655/GoldMine"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Code
                 </a>
               </div>
             </div>
@@ -324,16 +386,29 @@
         <h2 class="section-title">Education</h2>
         <div class="education-timeline">
           <div class="education-item">
-            <div class="education-date">2018 - 2022</div>
+            <div class="education-date">2022 - Present</div>
             <div class="education-content">
-              <h3 class="education-title">Computer Engineering</h3>
+              <h3 class="education-title">
+                Bachelor's in Computer Engineering
+              </h3>
               <p class="education-institution">
-                Polytechnic University of Madrid
+                Universitat Oberta de Catalunya (UOC)
               </p>
               <p class="education-description">
-                Bachelor's degree in Computer Engineering with a specialization
-                in Software Engineering. Final project: Distributed system for
-                real-time data processing.
+                Currently completing a degree in Computer Engineering with an
+                emphasis on programming, systems and software development.
+              </p>
+            </div>
+          </div>
+
+          <div class="education-item">
+            <div class="education-date">2023</div>
+            <div class="education-content">
+              <h3 class="education-title">AWS Certified Developer</h3>
+              <p class="education-institution">Amazon Web Services</p>
+              <p class="education-description">
+                Certification in developing and deploying applications on AWS,
+                including EC2, Lambda, S3 and RDS.
               </p>
             </div>
           </div>
@@ -347,20 +422,84 @@
               <p class="education-institution">Udemy / Coursera</p>
               <p class="education-description">
                 Intensive 6-month bootcamp focused on MERN stack technologies
-                (MongoDB, Express, React, Node.js) and development best
-                practices.
+                and development best practices.
               </p>
             </div>
           </div>
 
           <div class="education-item">
-            <div class="education-date">2023</div>
+            <div class="education-date">2015 - 2017</div>
             <div class="education-content">
-              <h3 class="education-title">AWS Certified Developer</h3>
-              <p class="education-institution">Amazon Web Services</p>
+              <h3 class="education-title">CFGS in Automotive Technology</h3>
+              <p class="education-institution">Monlau, Barcelona</p>
               <p class="education-description">
-                Certification in developing and deploying applications on AWS,
-                including services such as EC2, Lambda, S3, and RDS.
+                Vocational training in automotive mechanics and systems.
+              </p>
+            </div>
+          </div>
+
+          <div class="education-item">
+            <div class="education-date">2013 - 2015</div>
+            <div class="education-content">
+              <h3 class="education-title">Bachillerato</h3>
+              <p class="education-institution">IES Joan d’Àustria, Barcelona</p>
+              <p class="education-description">
+                General upper secondary education.
+              </p>
+            </div>
+          </div>
+
+          <div class="education-item">
+            <div class="education-date">2008 - 2012</div>
+            <div class="education-content">
+              <h3 class="education-title">ESO</h3>
+              <p class="education-institution">Voramar, Barcelona</p>
+              <p class="education-description">
+                Compulsory secondary education.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Professional Experience (uses same timeline layout) -->
+        <h2 class="section-title" style="margin-top: var(--spacing-xl)">
+          Professional Experience
+        </h2>
+        <div class="education-timeline">
+          <div class="education-item">
+            <div class="education-date">2019 – 2025</div>
+            <div class="education-content">
+              <h3 class="education-title">Head of Workshop</h3>
+              <p class="education-institution">Midas (Automotive Workshop)</p>
+              <p class="education-description">
+                Supervised the technical team and managed customer relations.
+                Responsible for quality control, vehicle maintenance oversight,
+                task coordination and process improvements to increase
+                efficiency.
+              </p>
+            </div>
+          </div>
+
+          <div class="education-item">
+            <div class="education-date">2018 – 2019</div>
+            <div class="education-content">
+              <h3 class="education-title">Official Mechanic</h3>
+              <p class="education-institution">Audi</p>
+              <p class="education-description">
+                Performed maintenance and repairs on premium vehicles, including
+                diagnostics of electrical and electronic systems.
+              </p>
+            </div>
+          </div>
+
+          <div class="education-item">
+            <div class="education-date">2017 – 2018</div>
+            <div class="education-content">
+              <h3 class="education-title">Official Mechanic</h3>
+              <p class="education-institution">Ford</p>
+              <p class="education-description">
+                Diagnosed, repaired and maintained vehicles; gained experience
+                with advanced systems and emerging automotive technologies.
               </p>
             </div>
           </div>
