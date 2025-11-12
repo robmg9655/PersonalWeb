@@ -13,4 +13,4 @@ python3 -m http.server 8000
 To replace placeholder assets:
 
 - Put your real `assets/profile.jpg` or update `index.html` to point to your image.
-- Replace `assets/cv_en.pdf` and `assets/cv_jp.pdf` with your real CV PDFs.
+- Replace `assets/cven.pdf` and `assets/cvjp.pdf` with your real CV PDFs.

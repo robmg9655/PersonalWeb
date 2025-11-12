@@ -350,21 +350,22 @@ document.querySelectorAll(".flag-btn").forEach((btn) => {
       // head request failed, we'll use fallback below
     }
 
-    // Fallback: generate a tiny placeholder file (static-friendly)
-    const isEnglish = file.toLowerCase().includes("en");
-    const content = isEnglish
-      ? "Robert Gost Montoliu - CV (English)\n\nThis is a placeholder file. Replace assets/cv_en.pdf with your real PDF."
-      : "Robert Gost Montoliu - CV (Japanese)\n\nThis is a placeholder file. Replace assets/cv_jp.pdf with your real PDF.";
+    // Fallback: the files live in the GitHub repository. Construct a raw
+    // GitHub URL and trigger the download from there (works for static
+    // hosting / GitHub Pages). Replace owner/repo/branch if needed.
+    const owner = "robmg9655";
+    const repo = "PersonalWeb";
+    const branch = "main";
+    const filename = file.split("/").pop();
+    const rawUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/assets/${filename}`;
 
-    const blob = new Blob([content], { type: "application/octet-stream" });
-    const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
-    a.href = url;
-    a.setAttribute("download", file.split("/").pop());
+    a.href = rawUrl;
+    a.setAttribute("download", filename);
+    a.target = "_blank";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    URL.revokeObjectURL(url);
     closeCvModal();
   });
 });
