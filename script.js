@@ -252,34 +252,6 @@ function showMessage(text, type) {
 }
 
 // ===========================
-// Profile Image Fallback
-// ===========================
-
-const profileImg = document.getElementById("profile-img");
-
-// Create a placeholder profile image if the actual image doesn't load
-profileImg.addEventListener("error", function () {
-  this.src =
-    'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"%3E%3Crect width="200" height="200" fill="%23131842"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Inter, sans-serif" font-size="80" fill="%2300d4ff"%3ERM%3C/text%3E%3C/svg%3E';
-});
-
-// ===========================
-// Project Image Placeholders
-// ===========================
-
-const projectImages = document.querySelectorAll(".project-image img");
-
-projectImages.forEach((img, index) => {
-  img.addEventListener("error", function () {
-    const colors = ["%2300d4ff", "%237dd3c0", "%2300b8e6"];
-    const color = colors[index % colors.length];
-    this.src = `data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect width="400" height="300" fill="%23131842"/%3E%3Ccircle cx="200" cy="150" r="50" fill="${color}" opacity="0.3"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" fill="${color}"%3EProyecto ${
-      index + 1
-    }%3C/text%3E%3C/svg%3E`;
-  });
-});
-
-// ===========================
 // CV Download Modal Logic
 // ===========================
 
@@ -289,11 +261,42 @@ const modalClose = cvModal ? cvModal.querySelector(".modal-close") : null;
 const modalOverlay = cvModal ? cvModal.querySelector(".modal-overlay") : null;
 
 function openCvModal() {
-  if (cvModal) cvModal.classList.remove("hidden");
+  if (!cvModal) return;
+  cvModal.classList.remove("hidden");
+  // set aria-expanded on the opener
+  if (downloadCvBtn) downloadCvBtn.setAttribute("aria-expanded", "true");
+  // save previously focused element
+  cvModal._previouslyFocused = document.activeElement;
+  // focus first focusable inside modal
+  const focusable = cvModal.querySelectorAll(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
+  if (focusable.length) focusable[0].focus();
+  document.addEventListener("focus", trapFocus, true);
 }
 
 function closeCvModal() {
-  if (cvModal) cvModal.classList.add("hidden");
+  if (!cvModal) return;
+  cvModal.classList.add("hidden");
+  if (downloadCvBtn) downloadCvBtn.setAttribute("aria-expanded", "false");
+  // restore focus
+  if (cvModal._previouslyFocused) cvModal._previouslyFocused.focus();
+  document.removeEventListener("focus", trapFocus, true);
+}
+
+// Simple focus trap: keep focus inside modal while open
+function trapFocus(e) {
+  if (!cvModal || cvModal.classList.contains("hidden")) return;
+  if (!cvModal.contains(e.target)) {
+    // redirect focus to first focusable
+    const focusable = cvModal.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    if (focusable.length) {
+      e.stopPropagation();
+      focusable[0].focus();
+    }
+  }
 }
 
 if (downloadCvBtn) {
@@ -325,20 +328,43 @@ document.addEventListener("keydown", (e) => {
 
 // Handle flag button downloads
 document.querySelectorAll(".flag-btn").forEach((btn) => {
-  btn.addEventListener("click", () => {
+  btn.addEventListener("click", async () => {
     const file = btn.getAttribute("data-file");
     if (!file) return;
 
-    // create temporary link to download
+    // Try fetching the file; if it exists, download it. If not, fall back to a small placeholder file.
+    try {
+      const res = await fetch(file, { method: "HEAD" });
+      if (res && res.ok) {
+        // download by creating a link to the URL
+        const a = document.createElement("a");
+        a.href = file;
+        a.setAttribute("download", file.split("/").pop());
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        closeCvModal();
+        return;
+      }
+    } catch (err) {
+      // head request failed, we'll use fallback below
+    }
+
+    // Fallback: generate a tiny placeholder file (static-friendly)
+    const isEnglish = file.toLowerCase().includes("en");
+    const content = isEnglish
+      ? "Robert Gost Montoliu - CV (English)\n\nThis is a placeholder file. Replace assets/cv_en.pdf with your real PDF."
+      : "Robert Gost Montoliu - CV (Japanese)\n\nThis is a placeholder file. Replace assets/cv_jp.pdf with your real PDF.";
+
+    const blob = new Blob([content], { type: "application/octet-stream" });
+    const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
-    a.href = file;
-    // extract filename for download attribute
-    const filename = file.split("/").pop();
-    a.setAttribute("download", filename);
+    a.href = url;
+    a.setAttribute("download", file.split("/").pop());
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-
+    URL.revokeObjectURL(url);
     closeCvModal();
   });
 });
