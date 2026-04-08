@@ -202,6 +202,14 @@ if (contactForm) {
       return;
     }
 
+    if (typeof emailjs === "undefined") {
+      showMessage(
+        "EmailJS library did not load. Please refresh and try again.",
+        "error",
+      );
+      return;
+    }
+
     // Disable submit button
     const submitButton = contactForm.querySelector('button[type="submit"]');
     const originalButtonText = submitButton.innerHTML;
@@ -223,6 +231,9 @@ if (contactForm) {
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         templateParams,
+        {
+          publicKey: EMAILJS_PUBLIC_KEY,
+        },
       );
 
       if (response.status === 200) {
@@ -236,8 +247,12 @@ if (contactForm) {
       }
     } catch (error) {
       console.error("EmailJS error:", error);
+      const errorDetail =
+        error?.text ||
+        error?.message ||
+        (error?.status ? `Code ${error.status}` : "Unknown error");
       showMessage(
-        "There was an error sending your message. Please try again or contact me directly by email.",
+        `There was an error sending your message (${errorDetail}). Please try again or contact me directly by email.`,
         "error",
       );
     } finally {
