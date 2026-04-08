@@ -31,13 +31,6 @@
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
     ></script>
-    <script type="text/javascript">
-      (function () {
-        emailjs.init({
-          publicKey: "4lYa0rxEMQpyBjONq",
-        });
-      })();
-    </script>
   </head>
   <body>
     <!-- Theme Toggle Button -->
@@ -491,7 +484,13 @@
             Do you have a project in mind or want to collaborate? I'd love to
             hear from you!
           </p>
-          <form id="contact-form" class="contact-form">
+          <form
+            id="contact-form"
+            class="contact-form"
+            data-emailjs-public-key="4lYa0rxEMQpyBjONq"
+            data-emailjs-service-id="service_h7eqocf"
+            data-emailjs-template-id="template_0mfg2z8"
+          >
             <div class="form-group">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" required />
@@ -547,10 +546,6 @@
     </footer>
 
     <!-- JavaScript -->
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
-    ></script>
     <script src="script.js"></script>
   </body>
 </html>

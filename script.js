@@ -126,7 +126,7 @@ window.addEventListener("scroll", () => {
     const sectionTop = section.offsetTop - 100;
     const sectionId = section.getAttribute("id");
     const correspondingLink = document.querySelector(
-      `.nav-link[href="#${sectionId}"]`
+      `.nav-link[href="#${sectionId}"]`,
     );
 
     if (correspondingLink) {
@@ -143,105 +143,114 @@ window.addEventListener("scroll", () => {
 // EmailJS Configuration
 // ===========================
 
-// Initialize EmailJS with your public key
-// Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
-const EMAILJS_PUBLIC_KEY = "4lYa0rxEMQpyBjONq";
-const EMAILJS_SERVICE_ID = "service_h7eqocf";
-const EMAILJS_TEMPLATE_ID = "service_h7eqocf";
+const contactForm = document.getElementById("contact-form");
+const formMessage = document.getElementById("form-message");
+
+const EMAILJS_PUBLIC_KEY =
+  contactForm?.dataset.emailjsPublicKey || "YOUR_PUBLIC_KEY";
+const EMAILJS_SERVICE_ID =
+  contactForm?.dataset.emailjsServiceId || "YOUR_SERVICE_ID";
+const EMAILJS_TEMPLATE_ID =
+  contactForm?.dataset.emailjsTemplateId || "YOUR_TEMPLATE_ID";
 
 // Check if EmailJS is configured
 const isEmailJSConfigured = () => {
   return (
     EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY" &&
     EMAILJS_SERVICE_ID !== "YOUR_SERVICE_ID" &&
-    EMAILJS_TEMPLATE_ID !== "YOUR_TEMPLATE_ID"
+    EMAILJS_TEMPLATE_ID !== "YOUR_TEMPLATE_ID" &&
+    EMAILJS_TEMPLATE_ID !== "template_contact_form"
   );
 };
 
 if (typeof emailjs !== "undefined" && isEmailJSConfigured()) {
-  emailjs.init(EMAILJS_PUBLIC_KEY);
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 }
 
 // ===========================
 // Contact Form Submission
 // ===========================
 
-const contactForm = document.getElementById("contact-form");
-const formMessage = document.getElementById("form-message");
+if (contactForm) {
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-contactForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+    // Get form values
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
 
-  // Get form values
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
+    // Validate form
+    if (!name || !email || !message) {
+      showMessage("Please complete all fields.", "error");
+      return;
+    }
 
-  // Validate form
-  if (!name || !email || !message) {
-    showMessage("Please complete all fields.", "error");
-    return;
-  }
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      showMessage("Please enter a valid email address.", "error");
+      return;
+    }
 
-  // Email validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    showMessage("Please enter a valid email address.", "error");
-    return;
-  }
+    // Check if EmailJS is configured
+    if (!isEmailJSConfigured()) {
+      showMessage(
+        "Contact form is not configured yet. Set a valid EmailJS template ID in index.html.",
+        "error",
+      );
+      return;
+    }
 
-  // Check if EmailJS is configured
-  if (!isEmailJSConfigured()) {
-    showMessage(
-      "Contact form is not configured. Please email me directly.",
-      "error"
-    );
-    return;
-  }
+    // Disable submit button
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.innerHTML;
+    submitButton.disabled = true;
+    submitButton.innerHTML =
+      '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
-  // Disable submit button
-  const submitButton = contactForm.querySelector('button[type="submit"]');
-  const originalButtonText = submitButton.innerHTML;
-  submitButton.disabled = true;
-  submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-
-  try {
-    // Send email using EmailJS
-    const response = await emailjs.send(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID,
-      {
+    try {
+      // These keys must match variables configured in your EmailJS template.
+      const templateParams = {
         from_name: name,
         from_email: email,
         message: message,
-        to_name: "Roberto Martínez García",
-      }
-    );
+        to_name: "Robert Gost Montoliu",
+        reply_to: email,
+      };
 
-    if (response.status === 200) {
-      showMessage(
-        "Message sent successfully! I will get back to you soon.",
-        "success"
+      const response = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
       );
-      contactForm.reset();
-    } else {
-      throw new Error("Error sending email");
+
+      if (response.status === 200) {
+        showMessage(
+          "Message sent successfully! I will get back to you soon.",
+          "success",
+        );
+        contactForm.reset();
+      } else {
+        throw new Error("Error sending email");
+      }
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      showMessage(
+        "There was an error sending your message. Please try again or contact me directly by email.",
+        "error",
+      );
+    } finally {
+      // Re-enable submit button
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalButtonText;
     }
-  } catch (error) {
-    console.error("Error:", error);
-    showMessage(
-      "There was an error sending your message. Please try again or contact me directly by email.",
-      "error"
-    );
-  } finally {
-    // Re-enable submit button
-    submitButton.disabled = false;
-    submitButton.innerHTML = originalButtonText;
-  }
-});
+  });
+}
 
 // Show form message
 function showMessage(text, type) {
+  if (!formMessage) return;
   formMessage.textContent = text;
   formMessage.className = `form-message ${type}`;
 
@@ -269,7 +278,7 @@ function openCvModal() {
   cvModal._previouslyFocused = document.activeElement;
   // focus first focusable inside modal
   const focusable = cvModal.querySelectorAll(
-    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
   );
   if (focusable.length) focusable[0].focus();
   document.addEventListener("focus", trapFocus, true);
@@ -290,7 +299,7 @@ function trapFocus(e) {
   if (!cvModal.contains(e.target)) {
     // redirect focus to first focusable
     const focusable = cvModal.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
     );
     if (focusable.length) {
       e.stopPropagation();
@@ -425,7 +434,7 @@ const skillObserver = new IntersectionObserver(
   },
   {
     threshold: 0.1,
-  }
+  },
 );
 
 skillCards.forEach((card) => {
@@ -452,7 +461,7 @@ const skillBoxObserver = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.15 }
+  { threshold: 0.15 },
 );
 
 skillBoxes.forEach((box, i) => {
@@ -480,7 +489,7 @@ const projectObserver = new IntersectionObserver(
   },
   {
     threshold: 0.1,
-  }
+  },
 );
 
 projectCards.forEach((card) => {
@@ -496,13 +505,13 @@ projectCards.forEach((card) => {
 
 console.log(
   "%cHello! 👋",
-  "color: #00d4ff; font-size: 24px; font-weight: bold;"
+  "color: #00d4ff; font-size: 24px; font-weight: bold;",
 );
 console.log(
   "%cInterested in the code? Visit my GitHub: https://github.com/robmg9655",
-  "color: #7dd3c0; font-size: 14px;"
+  "color: #7dd3c0; font-size: 14px;",
 );
 console.log(
   "%cIf you want to contact me, use the form on the page 😊",
-  "color: #a1a1aa; font-size: 12px;"
+  "color: #a1a1aa; font-size: 12px;",
 );
